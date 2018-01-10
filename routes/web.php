@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('create','BlogController@create');
+Route::post('postCreate','BlogController@postCreate');
+Route::get('admin-posts','BlogController@adminPost');
