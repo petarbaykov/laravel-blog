@@ -25,3 +25,6 @@ Route::get('edit/{id}','BlogController@edit');
 Route::post('postEdit','BlogController@postEdit');
 
 Route::get('delete/{id}','BlogController@delete');
+
+Route::get('posts','BlogController@posts');
+Route::get('post/{id}','BlogController@singlePost');

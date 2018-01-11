@@ -50,4 +50,15 @@ class BlogController extends Controller
 
     	return redirect()->back()->with('msg','Статията беше успешно изтрита');
     }
+
+    public function posts(){
+    	$posts = Post::all();
+
+    	return view('blog.index')->with(['posts'=>$posts]);
+    }
+
+    public function singlePost($id){
+    	$post = Post::find($id);
+    	return view('blog.single')->with(['post'=>$post]);
+    }
 }
