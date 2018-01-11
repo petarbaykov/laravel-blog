@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Post;
+use Auth;
 class BlogController extends Controller
 {
     public function create(){
@@ -12,12 +13,18 @@ class BlogController extends Controller
     }
 
     public function postCreate(Request $request){
+        $file  = $request->file('image');
     	$post = new Post();
     	$post->title = $request['title'];
     	$post->content = $request['content'];
     	$post->created_at = time();
+        
+        $post->author = Auth::user()->email;
     	$post->save();
-
+       
+        $post->update(['image'=> $post->id.'_post.'.$file->getClientOriginalExtension()]);
+        $path = 'blog-posts';
+        $file->move($path,$post->id.'_post.'.$file->getClientOriginalExtension());
     	return redirect()->back()->with('msg','Статията е добавена успешно');
     }
 
@@ -52,7 +59,7 @@ class BlogController extends Controller
     }
 
     public function posts(){
-    	$posts = Post::all();
+    	$posts = Post::paginate(5);
 
     	return view('blog.index')->with(['posts'=>$posts]);
     }

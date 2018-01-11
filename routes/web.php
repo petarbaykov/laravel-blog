@@ -11,13 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('create','BlogController@create');
 Route::post('postCreate','BlogController@postCreate');
 Route::get('admin-posts','BlogController@adminPost');
@@ -26,5 +23,5 @@ Route::post('postEdit','BlogController@postEdit');
 
 Route::get('delete/{id}','BlogController@delete');
 
-Route::get('posts','BlogController@posts');
+Route::get('/','BlogController@posts');
 Route::get('post/{id}','BlogController@singlePost');

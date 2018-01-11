@@ -17,7 +17,11 @@
 	    <label for="exampleInputPassword1">Сдържание</label>
 	    <textarea class="form-control" name="content"></textarea>
 	  </div>
-	  
+	    <div class="form-group">
+	    <label for="exampleInputEmail1">Снимка</label>
+	    <input type="file" class="form-control" name="image">
+	   
+	  </div>
 	  <button type="submit" class="btn btn-primary">Запиши</button>
 	</form>
 	
