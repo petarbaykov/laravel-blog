@@ -41,12 +41,18 @@ class BlogController extends Controller
     }
 
     public function postEdit(Request $request){
+         $file  = $request->file('image');
     	$post = Post::find($request['id']);
     	$post->title = $request['title'];
     	$post->content = $request['content'];
 
     	$post->save();
-
+        if(isset($_FILES['image'])){
+             $post->update(['image'=> $post->id.'_post.'.$file->getClientOriginalExtension()]);
+             $path = 'blog-posts';
+            $file->move($path,$post->id.'_post.'.$file->getClientOriginalExtension());
+        }
+        
     	return redirect()->back()->with('msg','Статията успешно обновена');
     }
 
@@ -61,7 +67,7 @@ class BlogController extends Controller
     public function posts(){
     	$posts = Post::paginate(5);
 
-    	return view('blog.index')->with(['posts'=>$posts]);
+    	return view('blog.index')->with(['posts'=>$posts,'page'=>'home']);
     }
 
     public function singlePost($id){

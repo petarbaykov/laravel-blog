@@ -15,11 +15,12 @@
     <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
      <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 </head>
-<body>
+<body @if( (isset($page) && $page == "home") || isset($isAuth )) class="bodyBg" @endif>
     <div id="app">
+        @if(!isset($isAuth))
         <nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
             <div class="container">
-          <a class="navbar-brand" href="#">Navbar</a>
+          <a class="navbar-brand" href="{{asset('/')}}">Laravel Blog</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -61,7 +62,7 @@
           </div>
         </div>
         </nav>
-            
+        @endif
             @yield('content')
        
        
@@ -72,5 +73,12 @@
      <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
      <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+     <script>
+         $(document).ready(function(){
+             $('.pagination>li').addClass("page-item");
+              $('.pagination>li>a').addClass("page-link");
+               $('.pagination>li>span').addClass("page-link");
+         });
+     </script>
 </body>
 </html>

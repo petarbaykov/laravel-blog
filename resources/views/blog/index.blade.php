@@ -14,11 +14,14 @@
 			</div>
 			<div class="col col-8">
 				@foreach($posts as $post)
-					<h1><a href="{{asset('post/'.$post->id)}}">{{$post->title}}</a></h1>
-					<p>{{ substr($post->content,0,500)}}</p>
-
+					<article>
+						<h1 class="post_title"><a href="{{asset('post/'.$post->id)}}">{{$post->title}}</a></h1>
+						<p>{{ substr($post->content,0,500)}}</p>
+					</article>
 				@endforeach
-				{{ $posts->links() }}
+				<ul class="pagination justify-content-center">
+    				{!! $posts->links() !!}
+  				</ul>
 			</div>
 			<div class="col col-2">
 			</div>

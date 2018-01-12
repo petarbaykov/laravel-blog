@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container" style="margin-top:20px;">
+	<h1>Добавяне на нова статия</h1>
 	@if(Session::has('msg'))
 		<div class="alert alert-success" role="alert">
 			{{Session::get('msg')}}
@@ -22,7 +24,7 @@
 	    <input type="file" class="form-control" name="image">
 	   
 	  </div>
-	  <button type="submit" class="btn btn-primary">Запиши</button>
+	  <button type="submit" class="btn btn-lg btn-block btn-primary">Запиши</button>
 	</form>
-	
+</div>
 @endsection
