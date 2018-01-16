@@ -42,13 +42,13 @@
                     @if(Auth::user()->role == "admin")
                        
                             <a class="dropdown-item" href="{{asset('create')}}">Нова статия</a>
-                             <a class="dropdown-item" href="{{asset('admin-posts')}}">Статии</a>
-                       
+                            <a class="dropdown-item" href="{{asset('admin-posts')}}">Статии</a>
+                            <a class="dropdown-item" href="{{asset('admin/users')}}">Добави автори</a>
                     @endif
                      <a  class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">
-                        Logout
+                        Изход
                     </a>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

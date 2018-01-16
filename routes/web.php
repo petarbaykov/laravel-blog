@@ -25,3 +25,9 @@ Route::get('delete/{id}','BlogController@delete');
 
 Route::get('/','BlogController@posts');
 Route::get('post/{id}','BlogController@singlePost');
+
+
+Route::group(['prefix'=>'admin'],function(){
+	Route::get('users','AdminController@makeAuthors');
+	Route::get('user/{id}','AdminController@makeAuthor');
+});

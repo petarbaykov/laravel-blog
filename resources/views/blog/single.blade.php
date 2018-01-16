@@ -18,8 +18,23 @@
 					<div class="col col-2">
 					</div>
 				</div>
+				<div class="row">
+					<div class="col col-2">
+					</div>
+					<div class="col col-8">
+						<h1>Добавяне на коментари</h1>
+
+						<form action="{{asset('post-comment')}}" method="post">
+							
+							{{csrf_field()}}
+							<textarea name="comment"></textarea>
+						</form>
+					</div>
+					<div class="col col-2">
+					</div>
+				</div>
 			</div>
 	
 		
-	
+			
 @endsection
