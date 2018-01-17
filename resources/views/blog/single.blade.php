@@ -22,13 +22,26 @@
 					<div class="col col-2">
 					</div>
 					<div class="col col-8">
-						<h1>Добавяне на коментари</h1>
+						@if(Session::has('msg'))
+							<div class="alert alert-success" role="alert">
+								{{Session::get('msg')}}
+							</div>
+						@endif
+						@if(Auth::check())
+							<h1>Добавяне на коментари</h1>
 
-						<form action="{{asset('post-comment')}}" method="post">
-							
-							{{csrf_field()}}
-							<textarea name="comment"></textarea>
-						</form>
+							<form action="{{asset('post-comment')}}" method="post">
+								
+								{{csrf_field()}}
+								<textarea name="comment"></textarea>
+								<input type="submit" name="" value="Коментирай">
+								<input type="hidden" name="post_id" value="{{$post->id}}">
+							</form>
+						@endif
+						<h1>Коментари</h1>
+						@foreach($comments as $comment)
+							{{$comment->email}} - > {{$comment->comment}} <br>
+						@endforeach
 					</div>
 					<div class="col col-2">
 					</div>

@@ -40,11 +40,18 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     @if(Auth::user()->role == "admin")
-                       
+                             
                             <a class="dropdown-item" href="{{asset('create')}}">Нова статия</a>
                             <a class="dropdown-item" href="{{asset('admin-posts')}}">Статии</a>
                             <a class="dropdown-item" href="{{asset('admin/users')}}">Добави автори</a>
+                            <a class="dropdown-item" href="{{asset('comments')}}">Коментари</a>
                     @endif
+                     @if(Auth::user()->role == "author")
+                               <a class="dropdown-item" href="{{asset('create')}}">Нова статия</a>
+                              <a class="dropdown-item" href="{{asset('admin-posts')}}">Статии</a>
+                              <a class="dropdown-item" href="{{asset('comments')}}">Коментари</a>
+                             
+                      @endif
                      <a  class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">

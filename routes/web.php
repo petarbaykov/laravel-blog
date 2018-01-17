@@ -30,4 +30,8 @@ Route::get('post/{id}','BlogController@singlePost');
 Route::group(['prefix'=>'admin'],function(){
 	Route::get('users','AdminController@makeAuthors');
 	Route::get('user/{id}','AdminController@makeAuthor');
+	Route::get('approve/{id}','AdminController@approve');
 });
+
+Route::post('post-comment','CommentController@postComment');
+Route::get('comments','CommentController@getComments');

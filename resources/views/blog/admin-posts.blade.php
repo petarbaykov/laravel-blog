@@ -26,6 +26,11 @@
 		      <td>
 		      	<a href="{{asset('edit/'.$post->id)}}" class="btn btn-success">Редактиране</a>
 		      	<a href="{{asset('delete/'.$post->id)}}" class="btn btn-danger">Изтриване</a>
+		      	@if(Auth::user()->role == "admin")
+		      		@if($post->approved == 0 && $post->author != Auth::user()->email)
+		      			<a href="{{asset('admin/approve/'.$post->id)}}" class="btn btn-primary">Одобри</a>
+		      		@endif
+		      	@endif
 		      </td>
 		    </tr>
 		@endforeach

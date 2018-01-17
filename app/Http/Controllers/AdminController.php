@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Auth;
 use DB;
+use App\Post;
 class AdminController extends Controller
 {
     //
@@ -32,5 +33,11 @@ class AdminController extends Controller
     	$user->save();
 
     	return redirect()->back()->with('msg',$msg);
+    }
+
+    public function approve($id){
+       DB::table('posts')->where('id',$id)->update(['approved'=>1]);
+
+       return redirect()->back()->with('msg','Статията беше одобрена');
     }
 }
