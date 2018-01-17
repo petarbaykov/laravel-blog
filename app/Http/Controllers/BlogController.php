@@ -77,7 +77,7 @@ class BlogController extends Controller
     }
 
     public function posts(){
-    	$posts = Post::where('approved',1)->paginate(5);
+    	$posts = Post::where('approved',1)->orderBy('id','desc')->paginate(5);
 
     	return view('blog.index')->with(['posts'=>$posts,'page'=>'home']);
     }

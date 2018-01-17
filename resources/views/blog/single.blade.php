@@ -13,7 +13,7 @@
 					<div class="col col-2">
 					</div>
 					<div class="col col-8">
-						{{$post->content}}
+						{!! $post->content !!}
 					</div>
 					<div class="col col-2">
 					</div>
@@ -27,17 +27,21 @@
 								{{Session::get('msg')}}
 							</div>
 						@endif
+						<hr>
 						@if(Auth::check())
+							
 							<h1>Добавяне на коментари</h1>
 
 							<form action="{{asset('post-comment')}}" method="post">
 								
 								{{csrf_field()}}
-								<textarea name="comment"></textarea>
-								<input type="submit" name="" value="Коментирай">
+								<textarea class="form-control" name="comment"></textarea>
+								<br>
+								<input type="submit" class="btn btn-lg btn-block btn-primary" name="" value="Коментирай">
 								<input type="hidden" name="post_id" value="{{$post->id}}">
 							</form>
 						@endif
+						<hr>
 						<h1>Коментари</h1>
 						@foreach($comments as $comment)
 							{{$comment->email}} - > {{$comment->comment}} <br>

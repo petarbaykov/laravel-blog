@@ -17,7 +17,7 @@
 	  </div>
 	  <div class="form-group">
 	    <label for="exampleInputPassword1">Сдържание</label>
-	    <textarea class="form-control" name="content"></textarea>
+	    <textarea class="form-control" name="content" id="editor"></textarea>
 	  </div>
 	    <div class="form-group">
 	    <label for="exampleInputEmail1">Снимка</label>

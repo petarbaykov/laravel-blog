@@ -32,6 +32,6 @@ Route::group(['prefix'=>'admin'],function(){
 	Route::get('user/{id}','AdminController@makeAuthor');
 	Route::get('approve/{id}','AdminController@approve');
 });
-
+Route::get('delete-comment/{id}','CommentController@deleteComment');
 Route::post('post-comment','CommentController@postComment');
 Route::get('comments','CommentController@getComments');

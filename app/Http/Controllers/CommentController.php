@@ -20,13 +20,22 @@ class CommentController extends Controller
     		$comments = DB::table('comments')
     		->join('posts','posts.id','comments.post_id')
     		->where('posts.author',Auth::user()->email)
+    		->select('posts.*','comments.*','comments.id as comment_id')
     		->get();
     	}else if(Auth::user()->role == "admin"){
     		$comments = DB::table('comments')
     		->join('posts','posts.id','comments.post_id')
+    		->select('posts.*','comments.*','comments.id as comment_id')
     		->get();
     	}
     	
     	return view('admin.comments')->with(['comments'=>$comments]);
+    }
+
+    public function deleteComment($id){
+
+    	DB::table('comments')->where('id',$id)->delete();
+
+    	return redirect()->back()->with('msg','Коментарът изтрит успешно');
     }
 }

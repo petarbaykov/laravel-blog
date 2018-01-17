@@ -80,12 +80,25 @@
      <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
      <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+      <script src="{{ asset('js/ckeditor.js') }}"></script>
      <script>
          $(document).ready(function(){
              $('.pagination>li').addClass("page-item");
               $('.pagination>li>a').addClass("page-link");
                $('.pagination>li>span').addClass("page-link");
+
+
+
+            ClassicEditor
+            .create( document.querySelector( '#editor' ) )
+            .then( editor => {
+                console.log( editor );
+            } )
+            .catch( error => {
+                console.error( error );
+            } );
          });
+
      </script>
 </body>
 </html>
