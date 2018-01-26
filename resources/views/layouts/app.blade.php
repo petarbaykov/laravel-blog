@@ -14,6 +14,7 @@
     
     <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
      <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+     <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet">
 </head>
 <body @if( (isset($page) && $page == "home") || isset($isAuth )) class="bodyBg" @endif>
     <div id="app">

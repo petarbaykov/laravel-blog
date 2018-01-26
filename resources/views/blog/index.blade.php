@@ -10,20 +10,37 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="col col-2">
-			</div>
-			<div class="col col-8">
+			<div class="col col-12">
+				<div class="flexbox">
 				@foreach($posts as $post)
 					<article>
-						<h1 class="post_title"><a href="{{asset('post/'.$post->id)}}">{{$post->title}}</a></h1>
-						<p>{{ substr($post->content,0,500)}}</p>
+						<div class="postImg" style="background-image: url({{asset('blog-posts/'.$post->image)}})">
+						</div>
+						<div class="postExcerpt">
+							<h1 class="post_title"><a href="{{asset('post/'.$post->id)}}">{{$post->title}}</a></h1>
+							<p>{{ strip_tags(substr($post->content,0,500)) }}</p>
+						</div>
+						
+						<div class="postFooter flexbox">
+							<span class="readMore">
+								<a href="{{asset('post/'.$post->id)}}">Прочети повече</a>
+							</span>
+							<div class="postLikes">
+								<span class="fa fa-heart"></span>
+							</div>
+							<div class="postComments">
+								<span class="fa fa-comments"></span>
+							</div>
+							<div class="postViews">
+								<span class="fa fa-eye"></span>
+							</div>
+						</div>
 					</article>
 				@endforeach
+				</div>
 				<ul class="pagination justify-content-center">
     				{!! $posts->links() !!}
   				</ul>
-			</div>
-			<div class="col col-2">
 			</div>
 		</div>
 	</div>
