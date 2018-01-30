@@ -6,7 +6,7 @@
                 
 
                     <form class="form-horizontal form-signin" method="POST" action="{{ route('login') }}">
-                        <h2 class="form-signin-heading">Login</h2>
+                        <h2 class="form-signin-heading">Вход</h2>
                         {{ csrf_field() }}
                          @if ($errors->has('email') || $errors->has('password'))
                             <div class="alert alert-danger">
@@ -36,7 +36,7 @@
 
 
                             <div class="">
-                                <input id="password" type="password" class="form-control" name="password" placeholder="Password" required>
+                                <input id="password" type="password" class="form-control" name="password" placeholder="Парола" required>
 
                                 
                             </div>
@@ -46,7 +46,7 @@
                             <div class="">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Запомни ме
                                     </label>
                                 </div>
                             </div>
@@ -55,11 +55,11 @@
                        
                             <div class="">
                                 <button type="submit" class="btn btn-lg btn-block btn-primary">
-                                    Login
+                                    Вход
                                 </button>
 
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
+                                    Забравена парола?
                                 </a>
                             </div>
                        

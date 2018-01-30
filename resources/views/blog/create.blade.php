@@ -12,16 +12,16 @@
 		{{csrf_field()}}
 	  <div class="form-group">
 	    <label for="exampleInputEmail1">Заглавие</label>
-	    <input type="text" class="form-control" name="title">
+	    <input type="text" class="form-control" name="title" required="require">
 	   
 	  </div>
 	  <div class="form-group">
 	    <label for="exampleInputPassword1">Сдържание</label>
-	    <textarea class="form-control" name="content" id="editor"></textarea>
+	    <textarea class="form-control" name="content" id="editor" ></textarea>
 	  </div>
 	    <div class="form-group">
 	    <label for="exampleInputEmail1">Снимка</label>
-	    <input type="file" class="form-control" name="image">
+	    <input type="file" class="form-control" name="image" required="required">
 	   
 	  </div>
 	  <button type="submit" class="btn btn-lg btn-block btn-primary">Запиши</button>

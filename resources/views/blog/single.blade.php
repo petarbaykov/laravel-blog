@@ -29,7 +29,8 @@
 						@endif
 						<hr>
 						@if(Auth::check())
-							
+							<div class="like" id="{{$post->id}}"><span class="fa fa-heart <?php if($liked):?> liked <?php endif; ?>"></span> Харесай</div>
+							<hr>
 							<h1>Добавяне на коментари</h1>
 
 							<form action="{{asset('post-comment')}}" method="post">
@@ -44,7 +45,10 @@
 						<hr>
 						<h1>Коментари</h1>
 						@foreach($comments as $comment)
-							{{$comment->email}} - > {{$comment->comment}} <br>
+							<div class="commentBox">
+								<h3>{{$comment->email}}</h3> 
+								<p>{{$comment->comment}} </p>
+							</div>
 						@endforeach
 					</div>
 					<div class="col col-2">

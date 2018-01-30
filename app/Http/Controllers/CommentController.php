@@ -21,11 +21,13 @@ class CommentController extends Controller
     		->join('posts','posts.id','comments.post_id')
     		->where('posts.author',Auth::user()->email)
     		->select('posts.*','comments.*','comments.id as comment_id')
+            ->orderBy('comments.id','desc')
     		->get();
     	}else if(Auth::user()->role == "admin"){
     		$comments = DB::table('comments')
     		->join('posts','posts.id','comments.post_id')
     		->select('posts.*','comments.*','comments.id as comment_id')
+            ->orderBy('comments.id','desc')
     		->get();
     	}
     	

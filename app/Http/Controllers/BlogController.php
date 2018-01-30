@@ -39,9 +39,9 @@ class BlogController extends Controller
     public function adminPost(){
     	
         if(Auth::user()->role == "admin"){
-            $posts = Post::all();
+            $posts = Post::orderBy('id','desc')->get();
         }else if(Auth::user()->role == "author"){
-             $posts = Post::where('author',Auth::user()->email)->get();
+             $posts = Post::where('author',Auth::user()->email)->orderBy('id','desc')->get();
         }
     	return view('blog.admin-posts')->with(['posts'=>$posts]);
     }
@@ -77,8 +77,15 @@ class BlogController extends Controller
     }
 
     public function posts(){
-    	$posts = Post::where('approved',1)->orderBy('id','desc')->paginate(5);
-
+    	$posts = DB::table('posts')
+            ->where('approved',1)
+            ->leftJoin('comments','comments.post_id','=','posts.id')
+            ->leftJoin('post_likes','posts.id','=','post_likes.post_id')
+            ->select('posts.*',DB::raw('count(comments.post_id) as post_comments'),DB::raw('count(post_likes.post_id) as post_likes'))
+            ->groupBy('posts.id')
+            ->orderBy('posts.id','desc')
+            ->paginate(6);
+        
     	return view('blog.index')->with(['posts'=>$posts,'page'=>'home']);
     }
 
@@ -89,7 +96,27 @@ class BlogController extends Controller
        ->select('comments.comment','comments.user_id','users.email')
        ->where('comments.post_id','=',$id)
        ->get();
+        $post->increment('views');
+       $liked = false;
+       if(Auth::check()){
+            $like =  DB::table('post_likes')->where('post_id',$id)->where('user_id',\Auth::user()->id)->first();
+            if($like){
+                $liked = true;
+            }
+       }
+      
+    	return view('blog.single')->with(['post'=>$post,'comments'=>$comments,'liked'=>$liked]);
+    }
 
-    	return view('blog.single')->with(['post'=>$post,'comments'=>$comments]);
+    public function likePost(Request $request){
+
+        $request = $request->all();
+        $like =  DB::table('post_likes')->where('post_id',$request['post_id'])->where('user_id',\Auth::user()->id)->first();
+        if(!$like){
+            DB::table('post_likes')
+            ->insert(['post_id'=>$request['post_id'],'user_id'=>\Auth::user()->id]);
+            return 'ok';
+        }
+        
     }
 }

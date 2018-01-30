@@ -82,7 +82,9 @@
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
      <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
       <script src="{{ asset('js/ckeditor.js') }}"></script>
+     
      <script>
+         var baseUrl = "<?php echo asset('/');?>";
          $(document).ready(function(){
              $('.pagination>li').addClass("page-item");
               $('.pagination>li>a').addClass("page-link");
@@ -101,5 +103,6 @@
          });
 
      </script>
+      <script src="{{ asset('js/main.js') }}"></script>
 </body>
 </html>

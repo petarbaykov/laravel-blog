@@ -3,8 +3,8 @@
 @section('content')
 	<div class="jumbotron jumbotron-fluid header-bg">
 	  <div class="container">
-	    <h1 class="display-4">Моят блог</h1>
-	    <p class="lead">Това е моят блог</p>
+	    <h1 class="display-4">Laravel blog</h1>
+	    <p class="lead">This is awesome Laravel blog</p>
 	  </div>
 	</div>
 
@@ -26,13 +26,13 @@
 								<a href="{{asset('post/'.$post->id)}}">Прочети повече</a>
 							</span>
 							<div class="postLikes">
-								<span class="fa fa-heart"></span>
+								<span class="fa fa-heart"></span> {{$post->post_likes}}
 							</div>
 							<div class="postComments">
-								<span class="fa fa-comments"></span>
+								<span class="fa fa-comments"></span> {{$post->post_comments}}
 							</div>
 							<div class="postViews">
-								<span class="fa fa-eye"></span>
+								<span class="fa fa-eye"></span> {{$post->views}}
 							</div>
 						</div>
 					</article>

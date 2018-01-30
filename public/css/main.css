@@ -7,7 +7,7 @@ body{
 	background: #EDF3F3;
 }
 .header-bg{
-	background-image:url('../img/header-bg.jpg');
+	background-image:url('../img/header-bg.jpeg');
 	background-position:bottom center;
 	background-size:cover;
 	background-repeat: no-repeat;
@@ -93,11 +93,13 @@ body {
   border-bottom-left-radius: 0;
 }
 .form-signin input[type="password"] {
-  margin-bottom: 10px;
+
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-
+button[type="submit"]{
+  margin-top:15px;
+}
 
 #editor{
 
@@ -154,4 +156,15 @@ float: left;
 }
 .readMore a:hover{
   text-decoration: none;
+}
+.liked{
+  color:red;
+}
+.commentBox{
+  padding:15px;
+  background:#efefef;
+  margin:10px 0;
+}
+.commentBox h3{
+  font-size:14px;
 }

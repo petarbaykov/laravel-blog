@@ -35,3 +35,5 @@ Route::group(['prefix'=>'admin'],function(){
 Route::get('delete-comment/{id}','CommentController@deleteComment');
 Route::post('post-comment','CommentController@postComment');
 Route::get('comments','CommentController@getComments');
+
+Route::post('like-post','BlogController@likePost');
